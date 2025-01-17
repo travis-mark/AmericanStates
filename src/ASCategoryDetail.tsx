@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'; 
 import { ASBlueButton } from './ASButton';
 import { ASPageView } from './ASPageView';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { ASCategoryData } from './ASCategories';
+import { ASTitleBanner } from './ASTitleBanner';
 
 export const ASCategoryDetailScreen = ({ navigation }) => {
     useEffect(() => {
@@ -13,11 +14,7 @@ export const ASCategoryDetailScreen = ({ navigation }) => {
     const { name } = route.params
     return (
         <ASPageView style={{ padding: 0, gap: 0 }}>
-            <View style={{ backgroundColor: "rgb(255, 193, 0)", height: 44, justifyContent: 'center' }}>
-                <Text style={{ fontWeight: 'bold', textAlign: 'center', textTransform: 'uppercase', fontSize: 18 }}>
-                    Kansas
-                </Text>
-            </View>
+            <ASTitleBanner text='Kansas' />
             <ScrollView>
                 <View style={{ padding: 20, gap: 8 }}>
                     {ASCategoryData.filter(category => category.parent == name).map(category => (

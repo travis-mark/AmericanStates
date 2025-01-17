@@ -33,7 +33,7 @@ export const ASCategoryData = [
         { name: "Business Competitiveness", parent: "Prosperity" },
         { name: "Household Income", parent: "Prosperity" },
         { name: "Unemployment Rate", parent: "Prosperity" },
-        { name: "Net Job Growth", parent: "Prosperity" },
+        { name: "Net Job Growth", parent: "Prosperity", screen: "NetJobGrowth" },
         { name: "Income Inequality", parent: "Prosperity" },
         { name: "New Firms", parent: "Prosperity" },
         { name: "Venture Capital Investment", parent: "Prosperity" },
@@ -83,7 +83,6 @@ export const ASCategoriesScreen = ({ navigation }) => {
                         onPress={() => navigation.push("CategoryDetail", category)} />
                 ))}
             </View>
-            
         </ASPageView>
     );
 };

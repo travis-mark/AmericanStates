@@ -1,121 +1,22 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  Button,
-  Image,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ASHomeScreen } from './src/ASHomeScreen';
+import { ASCategories } from './src/ASCategories';
 
-import {
-  Colors,
-  DebugInstructions,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import { ASButton } from './src/ASButton';
+const Stack = createNativeStackNavigator();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+// TODO: Get ok for nav bar
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1,
-    height: '100%',
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <View
-        style={{
-          backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          padding: 20,
-          gap: 8,
-          flex: 1,
-          height: '100%',
-          justifyContent: 'space-between'
-        }}>
-        {/* TODO: Get logo without text. */}
-        <Image source={require('./american-states-logo.png')} style={{
-          width: '100%',
-          height: 128, // TODO: Image is 255px, add 1px to bottom
-          resizeMode: 'contain'
-        }} />
-
-        <View style={{gap: 8}}>
-          <ASButton title="State" />
-          <ASButton title="Category" />
-          <ASButton title="Measure" />
-        </View>
-
-        <Text style={{ fontWeight: 'bold', textAlign: 'center', textTransform: 'uppercase'}}>Talk is cheap, results are priceless</Text>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={ASHomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Categories" component={ASCategories} options={{ title: "Measure Category"}} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

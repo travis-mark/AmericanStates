@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         borderRadius: 8,
         elevation: 2,
+        justifyContent: 'center',
+        minHeight: 44,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -16,8 +18,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
     },
     pressed: {
-        backgroundColor: '#b91c1c', // darker red when pressed
-        transform: [{ scale: 0.975 }], // slight scale down when pressed
+        backgroundColor: '#991B1B', // darker red when pressed
     },
     text: {
         color: 'white',
@@ -34,7 +35,7 @@ export const ASButton = ({ title = "Click Me", onPress = () => console.log('Butt
                 styles.button,
                 pressed && styles.pressed
             ]}
-            onPress={() => console.log('Button pressed!')}
+            onPress={onPress}
         >
             <Text style={styles.text}>{title}</Text>
         </Pressable>

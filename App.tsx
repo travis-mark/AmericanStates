@@ -2,7 +2,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ASHomeScreen } from './src/ASHomeScreen';
-import { ASCategories } from './src/ASCategories';
+import { ASCategoriesScreen } from './src/ASCategories';
+import { ASComingSoonScreen } from './src/ASComingSoonScreen';
+import { ASCategoryDetailScreen } from './src/ASCategoryDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +15,9 @@ function App(): React.JSX.Element {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={ASHomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Categories" component={ASCategories} options={{ title: "Measure Category"}} />
+        <Stack.Screen name="Categories" component={ASCategoriesScreen} options={{ title: "Categories" }} />
+        <Stack.Screen name="CategoryDetail" component={ASCategoryDetailScreen} />
+        <Stack.Screen name="ComingSoon" component={ASComingSoonScreen} options={{title: "Coming Soon!"}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,7 +2,7 @@ import { Pressable, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#dc2626',
+        
         paddingVertical: 8,
         paddingHorizontal: 16,
         borderRadius: 8,
@@ -17,8 +17,17 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
     },
-    pressed: {
-        backgroundColor: '#991B1B', // darker red when pressed
+    red: {
+        backgroundColor: '#dc2626',
+    },
+    pressedRed: {
+        backgroundColor: '#991B1B',
+    },
+    blue: {
+        backgroundColor: '#1e3a8a',
+    },
+    pressedBlue: {
+        backgroundColor: '#1d4ed8',
     },
     text: {
         color: 'white',
@@ -28,12 +37,28 @@ const styles = StyleSheet.create({
     },
 });
 
-export const ASButton = ({ title = "Click Me", onPress = () => console.log('Button pressed!') }) => {
+export const ASRedButton = ({ title = "Click Me", onPress = () => console.log('Button pressed!') }) => {
     return (
         <Pressable
             style={({ pressed }) => [
                 styles.button,
-                pressed && styles.pressed
+                styles.red,
+                pressed && styles.pressedRed
+            ]}
+            onPress={onPress}
+        >
+            <Text style={styles.text}>{title}</Text>
+        </Pressable>
+    );
+};
+
+export const ASBlueButton = ({ title = "Click Me", onPress = () => console.log('Button pressed!') }) => {
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.button,
+                styles.blue,
+                pressed && styles.pressedBlue
             ]}
             onPress={onPress}
         >
